@@ -1,33 +1,60 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import type { Task } from './types'
+import type { TaskStatus } from './types'
+import { TaskList } from './components/TaskList/TaskList'
 import './App.css'
+import type { TaskListProps } from './types'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, settasks] = useState([
+    {
+      id: "1",
+      title: "Buy groceries",
+      description: "Get milk, bread, bananas",
+      status: "pending",
+      priority: "low",
+      dueDate: "12/16/2025"
+    },
+    {
+      id: "2",
+      title: "Earn education",
+      description: "Practice, practice, practice",
+      status: "in-progress",
+      priority: "high",
+      dueDate: "05/08/2026"
+    },
+    {
+      id: "3",
+      title: "Win Nobel Prize",
+      description: "Discover something great",
+      status: "in-progress",
+      priority: "medium",
+      dueDate: "05/08/2036"
+    }
+  ])
 
+  const newTasks: TaskListProps = {
+    tasks: tasks as Task[],
+    onStatusChange: (taskId: string, newStatus: TaskStatus) => {
+      const updatedTasks = tasks.map(task => {
+        if (task.id === taskId) {
+          return { ...task, status: newStatus };
+        } else return task;
+      });
+      settasks(updatedTasks);
+    },
+    onDelete: (taskId: string) => {
+      const updatedTasks = tasks.filter((task) => task.id !== taskId);
+      settasks(updatedTasks);
+    }
+  }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <TaskList
+        tasks={newTasks.tasks}
+        onStatusChange={newTasks.onStatusChange}
+        onDelete={newTasks.onDelete}
+      />
     </>
   )
 }
