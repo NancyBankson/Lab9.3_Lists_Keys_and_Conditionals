@@ -11,17 +11,16 @@ export function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
 
     const handleDelete = (event: React.MouseEvent<HTMLParagraphElement>) => {
         const target = event.target as HTMLElement;
-        console.log(target);
         onDelete(target.id);
     }
     return (
-        <div key={task.id}>
+        <div key={task.id} className="task-container">
             <div className="title-row">
                 <h1>{task.title}</h1>
                 <select defaultValue={task.status} onChange={handleStatusChange}>
-                    <option value="pending">pending</option>
-                    <option value="in-progress">in-progress</option>
-                    <option value="completed">completed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
                 </select>
                 <p id={task.id} onClick={handleDelete}>Delete</p>
             </div>

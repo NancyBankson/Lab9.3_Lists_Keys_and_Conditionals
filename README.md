@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+ Lab 9.3 Lists, Keys, and Conditionals
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This lab focuses on list rendering, key management, conditional rendering, and component composition using React and TypeScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+Activity Tasks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Component Implementation:
 
-## Expanding the ESLint configuration
+- Implement each component according to its interface requirements.
+- Use proper TypeScript types and interfaces.
+- Implement list rendering with unique keys.
+- Add conditional rendering based on task properties.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. List Management:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Render the task list with proper key props.
+- Implement filtering functionality.
+- Handle task status changes.
+- Implement task deletion.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Visual Feedback:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Show different styles based on task status and priority.
+- Implement hover and active states.
+- Add visual indicators for task properties.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Component Composition:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Compose components to create a complete task management interface.
+- Handle prop passing between components.
+- Implement proper event handling.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tools
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Vite
+
+## Reflection Questions
+
+This lab is extremely challenging.  I was unable to complete all of the tasks.  I was able to delete tasks, but not change the status.  I was able to filter the tasks once, but failed at the second attempt.
+
+1. How did you ensure unique keys for your list items?
+
+I used the task id as the key.
+
+2. What considerations did you make when implementing the filtering functionality?
+
+I could not figure out how to use an event listener on both filters, so I changed the TaskFilterProps to have separate functions for each filter.  I was able to update the tasks once using the filter.
+
+3. How did you handle state updates for task status changes?
+
+I tried to set the onStatusChange function, but it isn't working.
+
+4. What challenges did you face when implementing conditional rendering?
+
+The only problem I had with the conditionals was getting the value for comparison.  I was required to set the value as a type rather than declaring it with the variable name and a colon.
