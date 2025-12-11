@@ -45,7 +45,7 @@ Activity Tasks
 
 ## Reflection Questions
 
-This lab is extremely challenging.  I was unable to complete all of the tasks.  I was able to delete tasks, but not change the status.  I was able to filter the tasks once, but failed at the second attempt.
+This lab is extremely challenging.  I was able to get the delete and change status functions to work.  Getting the filter to work was very challenging.  I got it to work, but it did not filter both options at the same time.  I tried to fix it, but created an infinite loop.  Thanks to Bryan for all the help with the filter.
 
 1. How did you ensure unique keys for your list items?
 
@@ -53,11 +53,11 @@ I used the task id as the key.
 
 2. What considerations did you make when implementing the filtering functionality?
 
-I could not figure out how to use an event listener on both filters, so I changed the TaskFilterProps to have separate functions for each filter.  I was able to update the tasks once using the filter.
+I had a lot of difficulty getting the filters to work.  I had to create in line functions based on Javon's filter.tsx.  I tried writing a function, but it caused an infinite loop.  Both filters do not work together.
 
 3. How did you handle state updates for task status changes?
 
-I tried to set the onStatusChange function, but it isn't working.
+I used the id I added to the paragraph element to target the task for change.
 
 4. What challenges did you face when implementing conditional rendering?
 
