@@ -1,6 +1,6 @@
-export type TaskStatus = 'pending' | 'in-progress' | 'completed';
+export type TaskStatus = 'All' | 'Pending' | 'In Progress' | 'Completed';
 
-export type TaskPriority = 'low' | 'medium' | 'high';
+export type TaskPriority = 'All' | 'Low' | 'Medium' | 'High';
  
 export interface Task {
   id: string;
@@ -24,11 +24,10 @@ export interface TaskItemProps {
 }
 
 export interface TaskFilterProps {
-  onStatusFilter: (newStatus: TaskStatus) => void,
-  onPriorityFilter: (newPriority: TaskPriority) => void;
-  }
+  onFilterChange: (filters: TaskFilters) => void;
+}
 
-// export interface Filters {
-//   status?: TaskStatus;
-//     priority?: 'low' | 'medium' | 'high';
-// }
+export interface TaskFilters {
+  status?: TaskStatus;
+    priority?: TaskPriority;
+}
