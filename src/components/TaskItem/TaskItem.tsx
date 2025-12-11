@@ -4,9 +4,9 @@ import type { TaskStatus } from "../../types";
 export function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
 
     const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const targetId = event.target.id;
+        const target = event.target as HTMLElement;
         const newStatus = event.target.value as TaskStatus;
-        onStatusChange(targetId, newStatus)
+        onStatusChange(target.id, newStatus)
     }
 
     const handleDelete = (event: React.MouseEvent<HTMLParagraphElement>) => {
@@ -17,7 +17,7 @@ export function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
         <div key={task.id} className="task-container">
             <div className="title-row">
                 <h1>{task.title}</h1>
-                <select defaultValue={task.status} onChange={handleStatusChange}>
+                <select id={task.id} defaultValue={task.status} onChange={handleStatusChange}>
                     <option value="Pending">Pending</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>

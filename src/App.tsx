@@ -37,6 +37,8 @@ function App() {
   const newTasks: TaskListProps = {
     tasks: tasks as Task[],
     onStatusChange: (taskId: string, newStatus: TaskStatus) => {
+      console.log(taskId);
+      console.log(newStatus);
       const updatedTasks = tasks.map(task => {
         if (task.id === taskId) {
           return { ...task, status: newStatus };
