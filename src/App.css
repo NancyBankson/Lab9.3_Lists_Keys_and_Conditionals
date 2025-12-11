@@ -56,3 +56,6 @@ h1 {
 .title-row select {
   max-height: 30px;
 }
+.delete-text:hover {
+  color: red;
+}
